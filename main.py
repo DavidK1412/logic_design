@@ -7,9 +7,11 @@ from utils.operations import addition, subtraction, multiplication, division
 app = FastAPI()
 
 
-@app.get("/base/")
+@app.post("/base/")
 async def get_base(num: BaseBody):
-    return {"base": get_number_base(num.num)}
+    base_num1 = get_number_base(num.num)
+    base_num2 = get_number_base(num.num2)
+    return {"base": base_num1 if base_num1 >= base_num2 else base_num2}
 
 
 @app.post("/addition/")

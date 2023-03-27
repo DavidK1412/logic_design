@@ -9,3 +9,4 @@ class OperationBody(BaseModel):
 
 class BaseBody(BaseModel):
     num: str
+    num2: str
