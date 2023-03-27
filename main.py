@@ -2,10 +2,21 @@ from fastapi import FastAPI
 from models.request_body import BaseBody, OperationBody
 from utils.number_set import get_number_base
 from utils.operations import addition, subtraction, multiplication, division
-
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
+origins = [
+    "http://localhost:5173/"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.post("/base/")
 async def get_base(num: BaseBody):
