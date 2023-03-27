@@ -8,7 +8,7 @@ app = FastAPI()
 
 
 @app.get("/base/")
-async def get_base(num):
+async def get_base(num: BaseBody):
     return {"base": get_number_base(num.num)}
 
 
